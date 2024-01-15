@@ -1,0 +1,9 @@
+gpg: /Users/oscarazrak/.gnupg/trustdb.gpg: tillitsdatabas skapad
+gpg: directory '/Users/oscarazrak/.gnupg/openpgp-revocs.d' created
+gpg: revocation certificate stored as '/Users/oscarazrak/.gnupg/openpgp-revocs.d/57A2CC4554425A05BAF67507501BB5417FD61F04.rev'
+den publika och den hemliga nyckeln är skapade och signerade.
+
+pub   rsa2048 2022-09-06 [SC] [går ut: 2022-12-05]
+      57A2CC4554425A05BAF67507501BB5417FD61F04
+uid                      oscar azrak (DD2395) <oazrak@kth.se>
+sub   rsa2048 2022-09-06 [E] [går ut: 2022-12-05]

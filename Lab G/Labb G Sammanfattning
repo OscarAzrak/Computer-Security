@@ -1,0 +1,91 @@
+Labb G Sammanfattning
+
+Först: I kth mailet se till att den skickar som plain text
+1. INTRO
+
+1. installera gpg: brew install gpg
+
+2. kolla version på gpg: gpg --version
+
+2.1 CREATING KEYS
+
+3. generera keys: gpg --full-generate-key
+ 3a. välj RSA
+ 3b. Nyckelstorlek: 2048 bits
+ 3c. Giltighetstid: 3 månader (3m)
+ 3d. Användaridentitet, namn: oscar azrak, email: oazrak@kth.se, kommentar: DD2395
+ 3e. lösenord: Oscar1234
+
+
+• What command did you use to generate the keypair?
+	- gpg --full-generate-key
+• Which user identity/ user identities are assigned to the key?
+	- name, email and comment (password?)
+• What is the fingerprint of your key?
+	-  2447 B89C A3AE 1C21 EB22  4CA8 4792 4A12 C7B5 1F96 ((Kanske??))
+• What subkey(s) are attached to your key? What is the purpose of the subkeys?
+
+2.2 IMOPORTING KEYS
+
+4. Ladda ner coursekey.pub och importera den till keyring: gpg --import coursekey.pub
+5. Signera key: gpg --sign-key gpg-sign@dasak-vm-lab-server.eecs.kth.se
+
+• What commands did you use for importing, checking and signing the key?
+	- gpg --import coursekey.pub, gpg --list-keys,  gpg --sign-key gpg-sign@dasak-vm-lab-server.eecs.kth.se
+• If you would not trust the fingerprint information on the course website but you would trust Sonja Buchegger’s (buc@kth.se) key, which is available from the course website but also from her personal website, what steps and commands would you need to perform to check the course key’s validity?
+• What is the difference between a normal and a local key signature?
+
+2.3 SUBMITTING KEYS
+
+6. gpg --output public.pgp --armor --export oazrak@kth.se 
+7. public.pgp fil innehåller en key, kopiera och klistra in innehållet till kth mail och skicka till: gpg-key@dasak-vm-lab-server.eecs.kth.se
+8. Skapa en ny fil i samma map t.ex signed-public.pgp och importera den: gpg --import signed-publig.pgp
+
+• What commands did you use for exporting the key and importing the signed key?
+	- gpg --output public.pgp --armor --export oazrak@kth.se
+• What command can you use to list all signatures on your key?
+	- gpg –list-keys
+• The default for exporting a key is to only export the public key. In what situations would you want to export your private key?
+	- Share between machines?
+
+2.4 AUGMENTING IDENTITIES
+
+9. lista alla secret keys: gpg --list-secret-keys --keyid-format=long, 
+	-få ut secret key: 501BB5417FD61F04
+
+10. redigera key: gpg --edit-key 501BB5417FD61F04
+
+11. Enter gpg> adduid to add the user ID details.
+ a) name: oscarazrak
+ b) epost: oscar@azrak.se
+ c) kommentar: DD2395
+
+12. enter gpg> save
+
+13.  gpg --armor --export
+
+ • What command(s) did you use to add an identity? 
+ 	- Kolla ovan
+ • How can you list all identities of a key?
+
+ 2.5 SIGNING KEYS
+
+14.:: Låt annan signera din key
+
+15. Lista dina keys: gpg --list-keys
+
+16. exportera den key du vill a signerad, gpg --output public.pgp --armor --export oazrak@kth.se
+
+17. kompis importerar min key till sin keyring: gpg --import FILNAMN
+
+18. kompis signerar min key: gpg --sign-key oazrak@kth.se
+
+19. kompis exporterar den key du vill a signerad, gpg --output public.pgp --armor --export oazrak@kth.se
+
+21. Jag importerar key: gpg --import FILNAMN
+
+• What steps and commands did you and your classmate need to perform in order to sign your key?
+• Should the system trust your key now, after you presented another signature on it? Why/why not?
+• When you sign another classmate’s key, you should compare the fingerprint before signing it. Why is this important?
+
+
